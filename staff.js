@@ -9,7 +9,7 @@ async function load(){
  const {data,error}=await supabase.from("barber_members").select("id,shop_id,display_name,role").eq("user_id",user.id).limit(1).maybeSingle();if(error)throw error;
  if(!data){$("#auth-panel").hidden=true;$("#join-panel").hidden=false;$("#staff-desk").hidden=true;return;}
  member=data;const s=await supabase.from("barber_shops").select("id,name").eq("id",member.shop_id).single();if(s.error)throw s.error;shop=s.data;
- $("#auth-panel").hidden=true;$("#join-panel").hidden=true;$("#staff-desk").hidden=false;$("#staff-shop").textContent=shop.name;$("#staff-name").textContent=member.display_name;await bookings();
+ $("#auth-panel").hidden=true;$("#join-panel").hidden=true;$("#staff-desk").hidden=false;$("#staff-shop").textContent=shop.name;$("#staff-name").textContent=member.display_name;await bookings();if(window.staffChannel)await supabase.removeChannel(window.staffChannel);window.staffChannel=supabase.channel("staff-bookings-"+shop.id).on("postgres_changes",{event:"*",schema:"public",table:"barber_bookings",filter:"shop_id=eq."+shop.id},()=>bookings().catch(e=>notice(e.message,"error"))).subscribe();
 }
 async function bookings(){
  const {data,error}=await supabase.from("barber_bookings").select("id,customer_name,customer_phone,appointment_at,status,notes,barber_services(name,price)").eq("shop_id",shop.id).order("appointment_at",{ascending:true}).limit(100);if(error)throw error;
