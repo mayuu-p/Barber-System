@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10100f">
+  <title>BarberOS — Salon Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">B</span><span>BARBER<span class="muted">OS</span></span></a>
+    <span class="top-note"><i></i> BUSINESS MANAGEMENT PLATFORM</span>
+    <a class="top-link" href="#workspaces">Explore workspace <span>↗</span></a>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="eyebrow"><span></span> THE OPERATING SYSTEM FOR MODERN BARBERSHOPS</div>
+      <h1>Run your shop.<br><em>Not the chaos.</em></h1>
+      <p class="hero-copy">Appointments, your team, customers and business performance — finally in one place.</p>
+      <a class="primary-btn" href="#workspaces">Enter your workspace <span>↘</span></a>
+      <div class="hero-meta"><span>01 / ONE CONNECTED PLATFORM</span><span>BUILT FOR INDEPENDENT SHOPS & SALONS</span></div>
+    </section>
+    <section class="workspace-section" id="workspaces">
+      <div class="section-heading"><div><div class="eyebrow">CHOOSE YOUR ACCESS</div><h2>One shop. Three workspaces.</h2></div><span class="section-count">01 — 03</span></div>
+      <div class="workspace-grid">
+        <a class="workspace-card customer" href="customer.html">
+          <div class="card-top"><span class="card-index">01 / CUSTOMER</span><span class="arrow">↗</span></div>
+          <div class="card-icon">✳</div><h3>Book a chair.</h3>
+          <p>Explore services, choose your barber and reserve a time without waiting in line.</p>
+          <span class="card-action">Open booking <b>→</b></span>
+        </a>
+        <a class="workspace-card staff" href="staff.html">
+          <div class="card-top"><span class="card-index">02 / TEAM</span><span class="arrow">↗</span></div>
+          <div class="card-icon">◷</div><h3>Own your shift.</h3>
+          <p>See today's appointments, manage your queue and keep every service moving.</p>
+          <span class="card-action">Open staff desk <b>→</b></span>
+        </a>
+        <a class="workspace-card owner" href="owner.html">
+          <div class="card-top"><span class="card-index">03 / OWNER</span><span class="arrow">↗</span></div>
+          <div class="card-icon">⌘</div><h3>See the whole shop.</h3>
+          <p>Control services, staff, bookings and business performance from one dashboard.</p>
+          <span class="card-action">Open control centre <b>→</b></span>
+        </a>
+      </div>
+    </section>
+    <footer><a class="brand footer-brand" href="#"><span class="brand-mark">B</span><span>BARBER<span class="muted">OS</span></span></a><span>LESS WAITING. BETTER SERVICE. MORE CONTROL.</span><span>© <span id="year"></span> BARBEROS</span></footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
