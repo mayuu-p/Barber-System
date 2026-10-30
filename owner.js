@@ -11,7 +11,7 @@ async function load(){
  if(!user){authPanel();return;}
  const {data,error}=await supabase.from("barber_shops").select("id,name,slug,phone,address,join_code").eq("owner_id",user.id).limit(1).maybeSingle();
  if(error)throw error;
- if(!data){setupPanel();return;}shop=data;dashboard();$("#shop-name").textContent=shop.name;$("#join-code").textContent=shop.join_code;await refresh();
+ if(!data){setupPanel();return;}shop=data;dashboard();$("#shop-name").textContent=shop.name;$("#join-code").textContent=shop.join_code;await refresh();if(channel)await supabase.removeChannel(channel);channel=supabase.channel("owner-bookings-"+shop.id).on("postgres_changes",{event:"*",schema:"public",table:"barber_bookings",filter:"shop_id=eq."+shop.id},()=>loadBookings().catch(e=>notice(e.message,"error"))).subscribe();
 }
 async function refresh(){
  if(!shop)return;
